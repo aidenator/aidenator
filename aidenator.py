@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template
 from words import *
+from myhtml import *
 import random
 
 app = Flask(__name__)
@@ -15,7 +16,8 @@ message_array = ["Somebody tell Cody to stop frowning.","What's that caribou doi
                  "When will something exciting happen?", "Is this your new startup project?",
                  "Clean ur house, bro.", "This prevents home invasions.", "What a time to be alive!",
                  "Truly a masterpiece.", "I could watch this all day!", "This is super weird.",
-                 "I can't even this site."]
+                 "I can't even this site.", "I know sites. I have the best sites.", "'Sup?",
+                 "Spot the kitty." ]
 
 
 @app.route('/')
@@ -31,25 +33,15 @@ def index():
     else:
         adj = random.choice(adj_list)
 
-    return render_template('index.html', funnytext=funnytext, adj=adj)
-
-@app.route('/charlotte')
-def charlotte():
-    return 'OMG, Charlotte, WTF are you doing on my site?!'
+    return render_template('index.html', funnytext=funnytext, adj=adj, header=header, footer=footer)
 
 @app.route('/<name>/<adj>')
 def name_adj(name, adj):
-    return render_template('name_adj.html', name=name, adj=adj)
-
-@app.route('/hello/<name>')
-def hello(name):
-    if(not name):
-        name = "Anonymous"
-    return render_template('page.html', name=name)
+    return render_template('name_adj.html', name=name, adj=adj, header=header, footer=footer)
 
 @app.errorhandler(500)
 def internal_error(exception):
-    return render_template("500.html", exception=exception), 500
+    return render_template("500.html", exception=exception, header=header, footer=footer), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
