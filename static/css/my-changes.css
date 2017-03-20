@@ -1,0 +1,36 @@
+/* My custom changes to Bootstrap's CSS... */
+
+/* Make the main link not look ugly with underlines */
+a:hover {
+  text-decoration: none;
+}
+
+/* Make modal header not so fat */
+.modal-header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Vertically center links at top in header */
+.nav-link {
+  padding-top: 16px;
+}
+
+.footer {
+  font-size: 12px;
+  text-align: center;
+  padding-top: 16px;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+/* Fix the title above the stream to be responsive to screen size */
+h1 {
+  font-size: 3.5vmax;
+}
+
+.jumbotron {
+  margin-bottom: 16px;
+}

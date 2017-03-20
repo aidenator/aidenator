@@ -4,11 +4,6 @@ body {
   padding-bottom: 1.5rem;
 }
 
-/* Fix the title above the stream to be responsive to screen size */
-h1 {
-  font-size: 4.5vmin;
-}
-
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
