@@ -11,9 +11,9 @@ a:hover {
   padding-bottom: 8px;
 }
 
-/* Vertically center links at top in header */
-.nav-link {
-  padding-top: 16px;
+/* This was negative 15px and made it all weird */
+.navbar-right {
+  margin-right: 0px;
 }
 
 .footer {
@@ -31,6 +31,20 @@ h1 {
   font-size: 3.5vmax;
 }
 
-.jumbotron {
+#thejumbo {
   margin-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.jumbotron p {
+  margin-bottom: 0px;
+  margin-top: 8px;
+}
+
+.jumbotron h1 {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

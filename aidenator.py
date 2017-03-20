@@ -4,6 +4,7 @@
 from flask import Flask, render_template
 from words import *
 from myhtml import *
+from myutils import *
 import random
 
 app = Flask(__name__)
@@ -38,6 +39,14 @@ def index():
 @app.route('/<name>/<adj>')
 def name_adj(name, adj):
     return render_template('name_adj.html', name=name, adj=adj, header=header, footer=footer)
+
+@app.route('/test')
+def test_page():
+    return render_template('test.html') 
+
+@app.route('/uptime')
+def uptime_page():
+    return render_template('generic.html', header=header, footer=footer, string=get_uptime()) 
 
 @app.errorhandler(500)
 def internal_error(exception):
