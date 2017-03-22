@@ -44,9 +44,11 @@ def name_adj(name, adj):
 def test_page():
     return render_template('test.html') 
 
-@app.route('/uptime')
+@app.route('/nerd_stuff')
 def uptime_page():
-    return render_template('generic.html', header=header, footer=footer, string=get_uptime()) 
+    mystring = ("{}<br>"
+                "Current connections: <b>{}</b>").format(get_uptime(), get_connections())
+    return render_template('generic.html', header=header, footer=footer, string=mystring) 
 
 @app.errorhandler(500)
 def internal_error(exception):

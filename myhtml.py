@@ -71,7 +71,7 @@ header ="""
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/uptime">Uptime</a>
+                                <a class="nav-link" href="/nerd_stuff">Nerd Stuff</a>
                             </li>
                         </ul>
                     </div><!--/.nav-collapse -->
