@@ -71,6 +71,9 @@ header ="""
                                 </div>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/connect4">Connect 4</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/nerd_stuff">Nerd Stuff</a>
                             </li>
                         </ul>

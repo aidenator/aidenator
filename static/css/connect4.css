@@ -18,7 +18,7 @@
     margin-top: 20px;
  
     display: inline-block;
-    background-color: rgb(167, 167, 173);
+    background-color: rgb(220, 220, 220);
     border-radius:15px;
 
 }
@@ -48,8 +48,9 @@
     margin-left: 18px;
     margin-top: 5px;
   
+    border: solid 1px;
     border-radius: 8px;
-    background-color: #B40404;
+    background-color: #1A86B9;
 }
 .lbutton {
     height: 50px;
@@ -59,7 +60,7 @@
     
     border: solid 1px;
     border-radius: 8px;
-    background-color: #B40404;
+    background-color: #1A86B9;
 }
 
 .rbutton {
@@ -70,20 +71,22 @@
     
     border: solid 1px;
     border-radius: 8px;
-    background-color: #B40404;
+    background-color: #1A86B9;
 }
 .green {
-    background-color: #01DF3A;
+    background-color: #45fdc1;
 }
 
 .btn-group {
  
     display: inline-block;
 }
-.restart {
 
+.restart {
     text-align: center;
+    padding-bottom: 10px;
 }
+
 .player {
     height: 350px;
     width: 150px;

@@ -17,6 +17,13 @@ class Move {
 
 // First thing that runs, this creates the buttons around the board.
 $(document).ready(function() {
+    var screen_width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if(screen_width < 730) {
+        $('.gametitle').text("This page only works on a desktop browser.");
+        playing = false;
+        return;
+    }
+
     for (var i = 0; i < maxWidth; i++) {
         $('.game').append($('<div/>', {
             class: 'column', id: 'col' + i
