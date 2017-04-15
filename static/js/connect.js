@@ -2,7 +2,6 @@
 var tokens = 0;// Total tokens on the board
 var playing = true;
 var won = false;// If someone has won this is true
-var winnermessage = false;// After someone has won, this gets set
 var maxHeight = 6;// Height of the gameboard. Default: 6
 var maxWidth  = 7;// Number of buttons along the bottom.
 var columns = gameArray(maxWidth, maxHeight);// Virtual representation of board
@@ -124,21 +123,15 @@ function AIstart(){
 
 // Display a winning message after someone has won
 function winMessage(){
-  if(winnermessage){
-    (tokens%2==0) ? name = "Blue" : name = "Red";
-    alert(name + " player wins!");
-    winnermessage = false;
-  }
+  (tokens%2==0) ? name = "Blue" : name = "Red";
+  alert(name + " player wins!");
 }
 
 // Turns off the game after someone has won.
 function win(){
   if(won){
-    var name = '';
     winMessage();
-    winnermessage = true;
     playing = false;
-    won = false;
   }
 }
 
@@ -309,25 +302,25 @@ $(document).ready(function() {
           return;
         }
 
-        var promy = new Promise(function(resolve, reject) {
-          animate(index,type);
-          win();
-          resolve();
-        });
+        setTimeout(my_animate(index,type), 300);
+        win();
 
-        promy.then(function(){
+        // Quit the game if player won, else let AI make its move
+        if(!playing)
+          return;
+
+        AIstart();
+
+        index = aimove[1];//Get the AI's move choices...
+        type = aimove[2];//...
+
+        //Wait for our animation to finish before playing the AI move
+        setTimeout(function(){
           if(!playing) return;
-          index = aimove[1];//Get the AI's move choices...
-          type = aimove[2];//...
-
-          //Wait for our animation to finish before playing the AI move
-          setTimeout(function(){
-            if(!playing) return;
-            updateGame(index, type);
-            win();
-            animate(index,type);
-          }, 300);//300 milliseconds is the animation time of coin dropping
-        });
+          updateGame(index, type);
+          win();
+          my_animate(index,type);
+        }, 300);//300 milliseconds is the animation time of coin dropping
 
         if( isDraw() ){// Check if that game has come to a draw/tie.
           $("#score").text("Draw!");
@@ -338,7 +331,9 @@ $(document).ready(function() {
     });
 });
 
-function animate(index, type){
+// This function takes 300ms to complete, so please pause that long anytime it's called.
+// Eg: setTimeout(my_animate(index, type), 300);
+function my_animate(index, type){
   var p = tokens%2 ? "player2" : "player1";
   var newToken = "<div class=\"token " + p + "\"></div>";
   var i; var y; var droplength;
@@ -357,7 +352,7 @@ function animate(index, type){
       colly.prepend(newToken);
       y = colly.children(".token:first-child").position().top;
       colly.children(".token:first-child").css("top", y);
-      colly.children(".token:first-child").animate({top:"+="+droplength+"px"},{duration:300, complete: winMessage});
+      colly.children(".token:first-child").animate({top:"+="+droplength+"px"},{duration:300});
       break;
 
     case 'l':
@@ -370,7 +365,7 @@ function animate(index, type){
       $(lb).prepend(newToken);
       y = $(lb).children(".token:first-child").position().left;
       $(lb).children(".token:first-child").css("left", y).css("margin-left","5px").css("margin-right","5px");
-      $(lb).children(".token:first-child").animate({left:"+="+droplength+"px"},{duration:300, complete: winMessage});
+      $(lb).children(".token:first-child").animate({left:"+="+droplength+"px"},{duration:300});
       break;
 
     case 'r':
@@ -383,11 +378,9 @@ function animate(index, type){
       $(rb).prepend(newToken);
       y = $(rb).children(".token:first-child").position().left;
       $(rb).children(".token:first-child").css("left", y).css("margin-left","5px").css("margin-right","5px");
-      $(rb).children(".token:first-child").animate({left:"+="+droplength+"px"},{duration:300, complete: winMessage});
+      $(rb).children(".token:first-child").animate({left:"+="+droplength+"px"},{duration:300});
       break;
   }
-  var prom = new Promise(AIstart);
-  return prom;
 }
 
 function restartgame(){
