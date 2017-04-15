@@ -18,7 +18,7 @@ message_array = ["Somebody tell Cody to stop frowning.","What's that caribou doi
                  "Clean ur house, bro.", "This prevents home invasions.", "What a time to be alive!",
                  "Truly a masterpiece.", "I could watch this all day!", "This is super weird.",
                  "I can't even this site.", "I know sites. I have the best sites.", "'Sup?",
-                 "Spot the kitty." ]
+                 "Spot the kitty.", "'I do not denigrate those with a penchant for self-improvement.' -Ti" ]
 
 
 @app.route('/')
@@ -49,6 +49,10 @@ def uptime_page():
     mystring = ("{}<br>"
                 "Current connections: <b>{}</b>").format(get_uptime(), get_connections())
     return render_template('generic.html', header=header, footer=footer, string=mystring) 
+
+@app.route('/connect4')
+def connect4():
+    return render_template('connect4.html', header=header, footer=footer)
 
 @app.errorhandler(500)
 def internal_error(exception):

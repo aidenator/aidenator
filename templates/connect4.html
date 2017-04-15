@@ -1,0 +1,53 @@
+{{ header|safe }}
+            <!-- Custom CSS -->
+            <link rel="stylesheet" href="../static/css/connect4.css" />
+
+            <!-- JQuery Crap -->
+            <link  href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<!--
+            <script>
+            </script>
+-->
+            <script src="../static/js/connect.js"></script>
+
+            <div class="container center-block" style="float:none">
+                <h2 class="gametitle">Weird Connect 4</h2>
+                <div class="container center-block" style="text-align: center"> 
+                    <div class="leftclicker center-block">
+                        <!-- JQuery appends left buttons divs here. class: lbutton -->
+                    </div>
+
+                    <div class="game center-block">
+                        <!-- JQuery appends column divs here. class: column -->
+                    </div>
+
+                    <div class="rightclicker center-block">
+                        <!-- JQuery appends right buttons divs here. class: rbutton -->
+                    </div>
+
+                    <div class="bottom center-block">
+                        <!-- JQuery appends button divs here class: button -->
+                    </div>
+                </div>
+
+                <div class="restart">
+                     <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default">Restart Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>&copy; Aidenator 2017</p>
+            </footer>
+        </div><!--/div .container (outermost) -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../static/js/bootstrap.min.js?v=1.1"></script>
+    </body>
+</html>
