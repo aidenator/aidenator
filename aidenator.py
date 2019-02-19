@@ -9,16 +9,18 @@ import random
 
 app = Flask(__name__)
 
-message_array = ["Somebody tell Cody to stop frowning.","What's that caribou doing back there?",
+message_array = ["Sounds like my ex wife.", "Tell Leo to stop being cute.",
                  "OMG, is that a Pokemon quilt?!", "Is this thing actually updating?",
-                 "Nightmode is 2spooky4me", "What the hell is this, Aiden?", "Does this have a point?",
+                 "What the hell is this, Aiden?", "Does this have a point?",
                  "I can tell this is some deep social experiment", "Why is Stone always on the couch?",
                  "Roseville looks like a cool place to live.", "Great job!", "This is dope AF.",
                  "When will something exciting happen?", "Is this your new startup project?",
                  "Clean ur house, bro.", "This prevents home invasions.", "What a time to be alive!",
                  "Truly a masterpiece.", "I could watch this all day!", "This is super weird.",
                  "I can't even this site.", "I know sites. I have the best sites.", "'Sup?",
-                 "Spot the kitty.", "'I do not denigrate those with a penchant for self-improvement.' -Ti" ]
+                 "Spot the kitty.", "'I do not denigrate those with a penchant for self-improvement.' -Ti",
+                 "'Have I mentioned the trappings of material wealth?' -Ti",
+                 "'The world does not fall if one engineer goes home for the day' -Ti",]
 
 
 @app.route('/')
@@ -53,6 +55,10 @@ def uptime_page():
 @app.route('/connect4')
 def connect4():
     return render_template('connect4.html', header=header, footer=footer)
+
+@app.route('/trump/<maga>')
+def trump():
+    return render_template('trump.html', header=header, footer=footer)
 
 @app.errorhandler(500)
 def internal_error(exception):
