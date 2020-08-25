@@ -17,7 +17,6 @@ sudo apt install libapache2-mod-wsgi-py3
 ```
 sudo python3 -m venv venv
 sudo chown -R yourusername:yourusername venv
-
 . venv/bin/activate
 ```
 You should have a (venv) prepending your prompt
@@ -33,7 +32,7 @@ wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-RGBW-Control/maste
 mv activate_this.py venv/bin
 ```
 
-### From here ocnfigure your apache
+### From here ccnfigure your apache
 ```
 sudo vim /etc/apache2/sites-available/aidenator.conf
 sudo a2dissite 000-default.conf
@@ -44,14 +43,14 @@ sudo service apache2 restart
 ### Contents of my Apache .conf which work for me
 ```
 <VirtualHost *:80>
-   WSGIDaemonProcess aidenatorsite user=hoopes group=hoopes threads=4
-   WSGIScriptAlias / /home/hoopes/aidenator/aidenator.wsgi
-   <Directory /home/hoopes/aidenator>
+   WSGIDaemonProcess aidenatorsite user=yourusername group=yourusername threads=4
+   WSGIScriptAlias / /home/yourusername/aidenator/aidenator.wsgi
+   <Directory /home/yourusername/aidenator>
       WSGIProcessGroup aidenatorsite
       WSGIApplicationGroup &{GLOBAL}
       Require all granted
    </Directory>
 </VirtualHost>
 
-ErrorLog /home/hoopes/aidenator/logs/error.log
+ErrorLog /home/yourusername/aidenator/logs/error.log
 ```
